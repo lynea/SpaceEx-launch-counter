@@ -1,35 +1,41 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 // import logo from './spacex-vector-logo.svg';
-import './App.scss';
+import "./App.scss";
+import CountDownContainer from "./components/countDown-container/countDown-container.component";
 
 class App extends Component {
-  constructor(){
-    super()
-    let datenow =  Date()
+  constructor() {
+    super();
+    let datenow = Date();
     this.state = {
-      nextLaunchDate : '', 
-      currentTime: datenow, 
-    }
+      nextLaunchDate: "",
+      currentTime: datenow
+    };
   }
 
-componentDidMount(){
-  fetch('https://api.spacexdata.com/v3/launches/next')
-  .then(results => {
-    return results.json(); 
-  }).then(data => {
-    this.setState({
-      nextLaunchDate: data.launch_date_utc,   
-    })
-  })
-}
+  componentDidMount() {
+    fetch("https://api.spacexdata.com/v3/launches/next")
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({
+          nextLaunchDate: data.launch_date_utc
+        });
+      });
+  }
 
-  render(){
-    return(
-      <div className = 'counterContainer'>
-        <h1>The next SpaceX launch will be on {(new Date(this.state.nextLaunchDate).toUTCString())}</h1>
-        <h1>the current time is {new Date(this.state.currentTime).toUTCString()}</h1>
-      </div>
-    )
+  render() {
+    return (
+      <CountDownContainer
+        launchDate={new Date(this.state.nextLaunchDate)}
+        text={"the next rocket will depart on:"}
+      >
+        <h1>
+          the current time is {new Date(this.state.currentTime).toUTCString()}
+        </h1>
+      </CountDownContainer>
+    );
   }
 }
 

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Days+One&display=swap');
+
+$font-stack:'Days One', sans-serif;
+$big-text-color : #5A074D;
+$small-text-color : #4A939D;
+
+body{
+    font-family: $font-stack;
+    background: url("../../images/2474066.jpg")
+}
+
+.counterContainer{
+    width:60%; 
+    color: blue;
+    background: rgba(255,255,255,0.85);
+    margin: 0 auto;
+    text-align: center;
+    border-radius:15px;
+    -webkit-box-shadow: 10px 25px 94px 17px rgba(0,0,0,0.36);
+    -moz-box-shadow: 10px 25px 94px 17px rgba(0,0,0,0.36);
+    box-shadow: 10px 25px 94px 17px rgba(0,0,0,0.36);
+    position:absolute; 
+    bottom: 40px;
+    left:50%;
+    margin-left:-570px;
+};
+
+h1:first-child{
+    padding-top: 30px;
+    color: $small-text-color;
+}
+
+h1:last-child{
+    font-size: 50px;
+    padding-bottom: 20px;
+    color:$big-text-color;
+}
